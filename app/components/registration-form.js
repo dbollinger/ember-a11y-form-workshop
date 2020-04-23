@@ -12,6 +12,12 @@ export default class RegistrationFormComponent extends Component {
     this.formSchema = RegistrationSchema;
   }
 
+  get errorFields() {
+    if (this.formErrors && this.formErrors.length) {
+      return this.formErrors.map((error) => error.path);
+    }
+  }
+
   @action
   async handleSubmit(evt) {
     evt.preventDefault();
