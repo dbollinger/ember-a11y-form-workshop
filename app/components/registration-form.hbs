@@ -10,13 +10,23 @@
   {{#if (not (is-empty this.formErrors))}}
     <div>
       <h3 role="alert" id="form-errors-heading">There are {{this.formErrors.length}} error(s) in this form</h3>
-      <ul {{did-insert this.focusErrors}} tabindex="-1" aria-labelledby="form-errors-heading" class="registration-form__errors">
+      <ul {{did-insert this.focusErrors}} tabindex="-1" aria-labelledby="form-errors-heading"
+        class="registration-form__errors">
         {{#each this.formErrors as |error|}}
           <li>
             <a href="#{{dasherize error.path}}" id="{{dasherize error.path}}__error">{{error.message}}</a>
           </li>
         {{/each}}
       </ul>
+    </div>
+  {{/if}}
+  {{#if this.didSuccessfullySubmit}}
+    <div>
+      <h3 role="alert" id="form-success">Successfully Registered</h3>
+      <p {{did-insert this.focusErrors}} tabindex="-1" aria-labelledby="form-errors-heading"
+        class="registration-form__errors">
+        Thank you for registering!
+      </p>
     </div>
   {{/if}}
   <fieldset>

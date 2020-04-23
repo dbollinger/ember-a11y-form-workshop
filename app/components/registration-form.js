@@ -6,6 +6,7 @@ import { RegistrationSchema } from '../validators/registration-form';
 export default class RegistrationFormComponent extends Component {
   @tracked formset = {};
   @tracked formErrors = null;
+  @tracked didSuccessfullySubmit;
 
   constructor() {
     super(...arguments);
