@@ -7,19 +7,21 @@
       greatest news about
       cats.</p>
   </div>
-  <fieldset class="registration-form__fields">
+  <fieldset>
     <legend>
       Personal Information
     </legend>
-    <label for="first-name">First Name</label>
-    <input id="first-name" placeholder="Henry" />
-    <label for="last-name">Last Name</label>
-    <input id="last-name" placeholder="Ford" />
-    <label for="email-address">Email Address</label>
-    <input id="email-address" placeholder="founder@ford.com" />
-    <label for="cats-owned">How many cats have you owned?</label>
-    <input id="cats-owned" type="number" placeholder="23" />
-  </div>
+    <div class="registration-form__fields">
+      <label for="first-name">First Name (Required)</label>
+      <input id="first-name" placeholder="Henry" required />
+      <label for="last-name">Last Name (Required)</label>
+      <input id="last-name" placeholder="Ford" required />
+      <label for="email-address" >Email Address (Required)</label>
+      <input id="email-address" placeholder="founder@ford.com" required />
+      <label for="cats-owned">How many cats have you owned? (Required)</label>
+      <input id="cats-owned" type="number" placeholder="23" required />
+    </div>
+  </fieldset>
   <div class="registration-form__actions">
     <button type="submit">Sign up</button>
   </div>
