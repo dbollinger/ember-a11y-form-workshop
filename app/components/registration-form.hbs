@@ -1,14 +1,18 @@
 <div class="registration-form">
   <div class="registration-form__info">
-    <h3>Sign up for Cats Weekly™️</h3>
+    <h2>Sign up for Cats Weekly</h2>
     <p>Just fill in the information below and we'll keep you up to date with all the latest and greatest news about
       cats.</p>
   </div>
   <div class="registration-form__fields">
-    <input placeholder="First Name" />
-    <input placeholder="Last Name" />
-    <input placeholder="Email Address" />
-    <input placeholder="How many cats do you own?" />
+    <label for="first-name">First Name</label>
+    <input id="first-name" placeholder="Henry" />
+    <label for="last-name">Last Name</label>
+    <input id="last-name" placeholder="Ford" />
+    <label for="email-address">Email Address</label>
+    <input id="email-address" placeholder="founder@ford.com" />
+    <label for="cats-owned">How many cats have you owned?</label>
+    <input id="cats-owned" type="number" placeholder="23" />
   </div>
   <div class="registration-form__actions">
     <button {{on "click" (fn this.handleSubmit)}}>Sign up</button>
