@@ -8,9 +8,9 @@
       cats.</p>
   </div>
   {{#if (not (is-empty this.formErrors))}}
-    <div role="alert">
-      <h3>There are {{this.formErrors.length}} error(s) in this form</h3>
-      <ul class="registration-form__errors">
+    <div>
+      <h3 role="alert" id="form-errors-heading">There are {{this.formErrors.length}} error(s) in this form</h3>
+      <ul {{did-insert this.focusErrors}} tabindex="-1" aria-labelledby="form-errors-heading" class="registration-form__errors">
         {{#each this.formErrors as |error|}}
           <li>
             <a href="#{{dasherize error.path}}" id="{{dasherize error.path}}__error">{{error.message}}</a>
@@ -32,10 +32,12 @@
         placeholder="Ford" required />
       <label for="email-address">Email Address (Required)</label>
       <input id="email-address" name="emailAddress"
-        aria-describedby={{if (contains 'emailAddress' this.errorFields) "email-address__error"}} value={{this.formset.emailAddress}}
-        {{on 'input' (fn this.updateField)}} placeholder="founder@ford.com" required />
+        aria-describedby={{if (contains 'emailAddress' this.errorFields) "email-address__error"}}
+        value={{this.formset.emailAddress}} {{on 'input' (fn this.updateField)}} placeholder="founder@ford.com"
+        required />
       <label for="cats-owned">How many cats have you owned? (Required)</label>
-      <input id="cats-owned" name="catsOwned" aria-describedby={{if (contains 'catsOwned' this.errorFields) "cats-owned__error"}}
+      <input id="cats-owned" name="catsOwned"
+        aria-describedby={{if (contains 'catsOwned' this.errorFields) "cats-owned__error"}}
         value={{this.formset.catsOwned}} {{on 'input' (fn this.updateField)}} type="number" placeholder="23" required />
     </div>
   </fieldset>

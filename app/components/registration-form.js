@@ -34,6 +34,11 @@ export default class RegistrationFormComponent extends Component {
     this.formset[evt.target.name] = evt.target.value;
   }
 
+  @action
+  focusErrors(element) {
+    element.focus();
+  }
+
   async validateForm() {
     try {
       await this.formSchema.validate(this.formset, { abortEarly: false });
