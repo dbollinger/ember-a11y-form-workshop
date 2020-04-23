@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-// import a11yAudit from 'ember-a11y-testing/test-support/audit';
+import a11yAudit from 'ember-a11y-testing/test-support/audit';
 
 module('Integration | Component | registration-form', function (hooks) {
   setupRenderingTest(hooks);
@@ -12,6 +12,6 @@ module('Integration | Component | registration-form', function (hooks) {
 
     assert.dom(this.element).exists();
 
-    // await a11yAudit(this.element);
+    await a11yAudit(this.element);
   });
 });
