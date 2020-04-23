@@ -13,13 +13,17 @@
     </legend>
     <div class="registration-form__fields">
       <label for="first-name">First Name (Required)</label>
-      <input id="first-name" placeholder="Henry" required />
+      <input id="first-name" name="firstName" value={{this.formset.firstName}} {{on 'input' (fn this.updateField)}}
+        placeholder="Henry" required />
       <label for="last-name">Last Name (Required)</label>
-      <input id="last-name" placeholder="Ford" required />
-      <label for="email-address" >Email Address (Required)</label>
-      <input id="email-address" placeholder="founder@ford.com" required />
+      <input id="last-name" name="lastName" value={{this.formset.lastName}} {{on 'input' (fn this.updateField)}}
+        placeholder="Ford" required />
+      <label for="email-address">Email Address (Required)</label>
+      <input id="email-address" name="emailAddress" value={{this.formset.emailAddress}}
+        {{on 'input' (fn this.updateField)}} placeholder="founder@ford.com" required />
       <label for="cats-owned">How many cats have you owned? (Required)</label>
-      <input id="cats-owned" type="number" placeholder="23" required />
+      <input id="cats-owned" name="catsOwned" value={{this.formset.catsOwned}} {{on 'input' (fn this.updateField)}}
+        type="number" placeholder="23" required />
     </div>
   </fieldset>
   <div class="registration-form__actions">

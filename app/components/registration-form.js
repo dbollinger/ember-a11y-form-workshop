@@ -4,6 +4,9 @@ import { action } from '@ember/object';
 import { RegistrationSchema } from '../validators/registration-form';
 
 export default class RegistrationFormComponent extends Component {
+  @tracked formset = {};
+  @tracked formErrors = null;
+
   constructor() {
     super(...arguments);
     this.formSchema = RegistrationSchema;
@@ -12,7 +15,29 @@ export default class RegistrationFormComponent extends Component {
   @action
   async handleSubmit(evt) {
     evt.preventDefault();
-    // eslint-disable-next-line
-    console.log(evt);
+
+    let success = await this.validateForm();
+
+    if (success) {
+      this.didSuccessfullySubmit = true;
+    }
+  }
+
+  @action
+  async updateField(evt) {
+    this.formset[evt.target.name] = evt.target.value;
+  }
+
+  async validateForm() {
+    try {
+      await this.formSchema.validate(this.formset, { abortEarly: false });
+      this.formErrors = null;
+      // eslint-disable-next-line
+      console.log('Formset is valid');
+      return true;
+    } catch (e) {
+      this.formErrors = e.inner;
+      console.log(this.formErrors);
+    }
   }
 }
