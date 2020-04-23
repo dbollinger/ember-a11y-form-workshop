@@ -12,6 +12,6 @@ export default class RegistrationFormComponent extends Component {
   @action
   async handleSubmit(evt) {
     // eslint-disable-next-line
-    console.log(evt);
+    evt.preventDefault();
   }
 }
