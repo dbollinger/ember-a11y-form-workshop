@@ -1,16 +1,32 @@
-<div class="registration-form">
+<form {{on "submit" (fn this.handleSubmit)}} aria-labelledby="form-title form-subtitle"
+  aria-describedby="form-description" class="registration-form">
   <div class="registration-form__info">
-    <h3>Sign up for Cats Weekly™️</h3>
-    <p>Just fill in the information below and we'll keep you up to date with all the latest and greatest news about
+    <h2 id="form-title">Sign up for Cats Weekly</h2>
+    <div id="form-subtitle" aria-hidden="true">The world's leading cat newsletter</div>
+    <p id="form-description">Just fill in the information below and we'll keep you up to date with all the latest and
+      greatest news about
       cats.</p>
   </div>
-  <div class="registration-form__fields">
-    <input placeholder="First Name" />
-    <input placeholder="Last Name" />
-    <input placeholder="Email Address" />
-    <input placeholder="How many cats do you own?" />
-  </div>
+  <fieldset>
+    <legend>
+      Personal Information
+    </legend>
+    <div class="registration-form__fields">
+      <label for="first-name">First Name (Required)</label>
+      <input id="first-name" name="firstName" value={{this.formset.firstName}} {{on 'input' (fn this.updateField)}}
+        placeholder="Henry" required />
+      <label for="last-name">Last Name (Required)</label>
+      <input id="last-name" name="lastName" value={{this.formset.lastName}} {{on 'input' (fn this.updateField)}}
+        placeholder="Ford" required />
+      <label for="email-address">Email Address (Required)</label>
+      <input id="email-address" name="emailAddress" value={{this.formset.emailAddress}}
+        {{on 'input' (fn this.updateField)}} placeholder="founder@ford.com" required />
+      <label for="cats-owned">How many cats have you owned? (Required)</label>
+      <input id="cats-owned" name="catsOwned" value={{this.formset.catsOwned}} {{on 'input' (fn this.updateField)}}
+        type="number" placeholder="23" required />
+    </div>
+  </fieldset>
   <div class="registration-form__actions">
-    <button {{on "click" (fn this.handleSubmit)}}>Sign up</button>
+    <button type="submit">Sign up</button>
   </div>
-</div>
+</form>
